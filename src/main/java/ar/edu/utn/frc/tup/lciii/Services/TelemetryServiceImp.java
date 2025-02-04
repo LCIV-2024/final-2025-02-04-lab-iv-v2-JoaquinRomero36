@@ -19,6 +19,8 @@ public class TelemetryServiceImp implements TelemetryService {
     @Autowired
     private DeviceServiceImp deviceServiceImp;
 
+
+
     @Override
     public Telemetry PostTelemetry(TelemetryDto telemetry) {
         if(telemetry == null){
@@ -53,7 +55,7 @@ public class TelemetryServiceImp implements TelemetryService {
         }
         List<Telemetry> telemetryFilter = new ArrayList<Telemetry>();
         for(Telemetry telemetry : telemetries){
-            if(telemetry.getHostname().equals(hostname)){
+            if(telemetry.getDevice().getHostName().equals(hostname)){
                 telemetryFilter.add(telemetry);
             }
         }
