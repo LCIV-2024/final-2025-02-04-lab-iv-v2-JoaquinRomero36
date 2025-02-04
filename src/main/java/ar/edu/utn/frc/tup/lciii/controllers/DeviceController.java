@@ -35,9 +35,9 @@ public class DeviceController {
         }
         return ResponseEntity.status(200).body(list);
     }
-    @GetMapping("device{lowThreshold}&{upThreshold}")
+    @GetMapping("device")
     public ResponseEntity<List<DeviceDto>> getDeviceByLowThreshold(
-            @PathVariable double lowThreshold, @PathVariable double upThreshold) {
+            @RequestParam double lowThreshold, @RequestParam double upThreshold) {
         if(lowThreshold > upThreshold) {
              ResponseEntity.badRequest().body("el valor upThreshold no puede ser menor a lowThreshold");
         }
