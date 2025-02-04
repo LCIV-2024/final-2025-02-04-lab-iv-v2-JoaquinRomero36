@@ -10,11 +10,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -23,6 +21,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "TELEMETRY")
 @EqualsAndHashCode
+@Getter
+@Setter
 public class Telemetry {
 
     @Id
@@ -34,4 +34,13 @@ public class Telemetry {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "HOSTNAME", referencedColumnName = "HOSTNAME", insertable = false, updatable = false)
     private Device device;
+
+    private String ip;
+    private LocalDateTime dataDate;
+    private double hostDiskFree;
+    private double cpuUsage;
+    private String microphoneState;
+    private boolean screenCaptureAllowed;
+    private boolean audioCaptureAllowed;
+    private String hostname;
 }

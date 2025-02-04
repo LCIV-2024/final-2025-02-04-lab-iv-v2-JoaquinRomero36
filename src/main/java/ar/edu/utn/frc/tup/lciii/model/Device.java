@@ -1,14 +1,9 @@
 package ar.edu.utn.frc.tup.lciii.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 
 @Data
@@ -17,17 +12,27 @@ import lombok.NoArgsConstructor;
 @Builder(toBuilder = true)
 @Entity
 @Table(name = "DEVICE")
+@Getter
+@Setter
 public class Device {
 
     @Id
     @Column(name = "HOSTNAME", unique = true)
+    private Long id;
+
     private String hostName;
 
     @OneToOne(mappedBy = "device")
     private Telemetry telemetry;
 
-//    @Column(name = "TYPE")
-//    @Enumerated(EnumType.STRING)
-//    private DeviceType type;
+    private LocalDateTime createDate;
+
+    private String os;
+
+    private String macAdress;
+
+    @Column(name = "TYPE")
+    @Enumerated(EnumType.STRING)
+    private String type;
 
 }
