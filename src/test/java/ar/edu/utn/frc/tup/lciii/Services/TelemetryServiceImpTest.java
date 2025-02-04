@@ -33,7 +33,7 @@ class TelemetryServiceImpTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Disabled
+    
     @Test
     void postTelemetry() {
         //creando el telemetry
