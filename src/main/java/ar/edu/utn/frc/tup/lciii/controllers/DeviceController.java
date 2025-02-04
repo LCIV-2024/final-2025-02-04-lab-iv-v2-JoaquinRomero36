@@ -35,11 +35,11 @@ public class DeviceController {
         }
         return ResponseEntity.status(200).body(list);
     }
-    @GetMapping("device{lowThreshold}{upThreshold}")
+    @GetMapping("device/{lowThreshold}&{upThreshold}")
     public ResponseEntity<List<DeviceDto>> getDeviceByLowThreshold(
             @PathVariable double lowThreshold, @PathVariable double upThreshold) {
-        if(lowThreshold < upThreshold) {
-            ResponseEntity.badRequest().body("el valor upThreshold no puede ser mayor a lowThreshold");
+        if(lowThreshold > upThreshold) {
+             ResponseEntity.badRequest().body("el valor upThreshold no puede ser menor a lowThreshold");
         }
         List<DeviceDto> list = deviceService.GetAllDeviceByCpuConsume(lowThreshold,upThreshold);
         if(list == null) {

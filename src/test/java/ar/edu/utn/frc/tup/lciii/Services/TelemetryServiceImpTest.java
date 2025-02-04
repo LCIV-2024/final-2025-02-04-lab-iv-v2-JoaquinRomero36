@@ -25,7 +25,7 @@ class TelemetryServiceImpTest {
     @Mock
     private TelemetryRepository telemetryRepository;
     @Mock
-    private DeviceService deviceService;
+    private DeviceServiceImp deviceService;
     @InjectMocks
     private TelemetryServiceImp telemetryService;
     @BeforeEach

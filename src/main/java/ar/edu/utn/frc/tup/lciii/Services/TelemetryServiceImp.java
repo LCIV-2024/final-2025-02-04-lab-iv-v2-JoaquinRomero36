@@ -16,6 +16,7 @@ import java.util.List;
 public class TelemetryServiceImp implements TelemetryService {
     @Autowired
     private TelemetryRepository telemetryRepository;
+    @Autowired
     private DeviceServiceImp deviceServiceImp;
 
     @Override
@@ -47,11 +48,8 @@ public class TelemetryServiceImp implements TelemetryService {
     @Override
     public List<Telemetry> GetAllTelemetries(String hostname) {
         List<Telemetry> telemetries = telemetryRepository.findAll();
-        if(telemetries == null){
+        if(telemetries.isEmpty()){
             return null;
-        }
-        if(hostname == null){
-            return telemetries;
         }
         List<Telemetry> telemetryFilter = new ArrayList<Telemetry>();
         for(Telemetry telemetry : telemetries){

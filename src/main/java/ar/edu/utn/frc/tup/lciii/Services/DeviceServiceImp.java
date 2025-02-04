@@ -46,7 +46,7 @@ public class DeviceServiceImp implements DeviceService {
         }
         List<DeviceDto> deviceFiltred = new ArrayList<DeviceDto>();
         for(Device d : devices){
-            if(d.getHostName().equals(tipe)){
+            if(d.getType().equals(tipe)){
                 DeviceDto dev = new DeviceDto();
                 dev.setHostName(d.getHostName());
                 dev.setOs(d.getOs());
@@ -93,15 +93,14 @@ public class DeviceServiceImp implements DeviceService {
     @Override
     public List<String> GetAllHostName() {
         List<Device> devices = deviceRepository.findAll();
-        if(devices == null){
-            return null;
-        }
-        List<String> hostNames = new ArrayList<>();
-        for(Device d : devices){
-            if(d.getHostName() != null){
+        if(!devices.isEmpty()){
+            List<String> hostNames = new ArrayList<>();
+            for(Device d : devices){
                 hostNames.add(d.getHostName());
             }
+            return hostNames;
         }
-        return hostNames;
+        System.out.println("No hay devises");
+        return null;
     }
 }
