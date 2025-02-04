@@ -19,5 +19,4 @@ public class TelemetryDto {
     private boolean screenCaptureAllowed;
     private boolean audioCaptureAllowed;
     private LocalDateTime dataDate;
-    private Device device;
 }

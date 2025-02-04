@@ -24,7 +24,7 @@ public class TelemetryServiceImp implements TelemetryService {
             return null;
         }
         List<String> hostName = deviceServiceImp.GetAllHostName();
-        if(hostName == null){
+        if(hostName.isEmpty()){
             return null;
         }
         for(String host : hostName){
@@ -38,7 +38,6 @@ public class TelemetryServiceImp implements TelemetryService {
                 tel.setMicrophoneState(telemetry.getMicrophoneState());
                 tel.setScreenCaptureAllowed(telemetry.isScreenCaptureAllowed());
                 tel.setAudioCaptureAllowed(telemetry.isAudioCaptureAllowed());
-                tel.setDevice(telemetry.getDevice());
                 return telemetryRepository.save(tel);
             }
         }

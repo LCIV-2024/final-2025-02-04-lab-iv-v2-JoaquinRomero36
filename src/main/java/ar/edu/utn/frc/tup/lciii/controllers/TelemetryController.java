@@ -18,7 +18,7 @@ public class TelemetryController {
     private TelemetryService telemetryService;
 
 
-    @PostMapping("http://localhost:8080/api/telemetry")
+    @PostMapping("telemetry")
     public ResponseEntity<Telemetry> addTelemetry(@RequestBody TelemetryDto telemetry) {
         Telemetry tel = telemetryService.PostTelemetry(telemetry);
         if(tel == null) {
@@ -26,7 +26,7 @@ public class TelemetryController {
         }
         return ResponseEntity.status(201).body(tel);
     }
-    @GetMapping("http://localhost:8080/api/telemetry{hostname}")
+    @GetMapping("telemetry{hostname}")
     public ResponseEntity<List<Telemetry>> getTelemetry(@PathVariable String hostname) {
         List<Telemetry> telemetries = telemetryService.GetAllTelemetries(hostname);
         if(telemetries == null) {

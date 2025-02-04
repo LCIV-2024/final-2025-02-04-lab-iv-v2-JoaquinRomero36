@@ -19,11 +19,13 @@ public class DeviceServiceImp implements DeviceService {
     @Override
     public Device PostDevice(DeviceDto device) {
         if(device == null){
+            System.out.println("device null");
             return null;
         }
         List<Device> devices = deviceRepository.findAll();
         for(Device d : devices){
             if(d.getHostName().equals(device.getHostName())){
+                System.out.println("Ya existe el HostName");
                 return null;
             }
         }
@@ -51,7 +53,6 @@ public class DeviceServiceImp implements DeviceService {
                 dev.setType(d.getType());
                 dev.setCreateDate(d.getCreateDate());
                 dev.setMacAdress(d.getMacAdress());
-                dev.setTelemetry(d.getTelemetry());
                 deviceFiltred.add(dev);
             }
         }
@@ -83,7 +84,6 @@ public class DeviceServiceImp implements DeviceService {
                 dev.setType(d.getType());
                 dev.setCreateDate(d.getCreateDate());
                 dev.setMacAdress(d.getMacAdress());
-                dev.setTelemetry(d.getTelemetry());
                 deviceFiltred.add(dev);
             }
         }
@@ -92,6 +92,16 @@ public class DeviceServiceImp implements DeviceService {
 
     @Override
     public List<String> GetAllHostName() {
-        return List.of();
+        List<Device> devices = deviceRepository.findAll();
+        if(devices == null){
+            return null;
+        }
+        List<String> hostNames = new ArrayList<>();
+        for(Device d : devices){
+            if(d.getHostName() != null){
+                hostNames.add(d.getHostName());
+            }
+        }
+        return hostNames;
     }
 }

@@ -19,15 +19,15 @@ public class DeviceController {
     @Autowired
     private DeviceService deviceService;
 
-    @PostMapping("http://localhost:8080/api/device")
+    @PostMapping("device")
     public ResponseEntity<Device> createDevice(@RequestBody DeviceDto device) {
         Device dev = deviceService.PostDevice(device);
         if(dev == null) {
-            ResponseEntity.badRequest();
+            ResponseEntity.badRequest().body("asdad");
         }
         return ResponseEntity.status(201).body(dev);
     }
-    @GetMapping("http://localhost:8080/api/device{type}")
+    @GetMapping("device{type}")
     public ResponseEntity<List<DeviceDto>> getDevice(@PathVariable String type) {
         List<DeviceDto> list = deviceService.GetAllDeviceByTipe(type);
         if(list == null) {
@@ -35,7 +35,7 @@ public class DeviceController {
         }
         return ResponseEntity.status(200).body(list);
     }
-    @GetMapping("http://localhost:8080/api/device{lowThreshold}{upThreshold}")
+    @GetMapping("device{lowThreshold}{upThreshold}")
     public ResponseEntity<List<DeviceDto>> getDeviceByLowThreshold(
             @PathVariable double lowThreshold, @PathVariable double upThreshold) {
         if(lowThreshold < upThreshold) {

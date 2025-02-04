@@ -15,5 +15,5 @@ public class DeviceDto {
     private String os;
     private String macAdress;
     private String type;
-    private Telemetry telemetry;
+
 }

@@ -35,6 +35,9 @@ public class Telemetry {
     @JoinColumn(name = "HOSTNAME", referencedColumnName = "HOSTNAME", insertable = false, updatable = false)
     private Device device;
 
+ //   @Column(name = "HOSTNAME")
+ //   private String hostName;
+
     private String ip;
     private LocalDateTime dataDate;
     private double hostDiskFree;

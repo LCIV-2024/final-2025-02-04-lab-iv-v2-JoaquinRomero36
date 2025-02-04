@@ -18,8 +18,6 @@ public class Device {
 
     @Id
     @Column(name = "HOSTNAME", unique = true)
-    private Long id;
-
     private String hostName;
 
     @OneToOne(mappedBy = "device")
@@ -32,7 +30,7 @@ public class Device {
     private String macAdress;
 
     @Column(name = "TYPE")
-    @Enumerated(EnumType.STRING)
+   // @Enumerated(EnumType.STRING)
     private String type;
 
 }
